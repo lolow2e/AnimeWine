@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
+            <div class="logo">
+                <h1>AnimeVerse</h1>
+            </div>
             <nav>
                 <ul>
                     <li><a href="#">Главная</a></li>
@@ -22,13 +24,9 @@
                     <li><a href="#">Профиль</a></li>
                 </ul>
             </nav>
-            <div class="logo">
-                <h1>AnimeVerse</h1>
-            </div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
         <section class="featured">
             <h2>Популярные аниме</h2>
@@ -49,14 +47,11 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2025 AnimeVerse. Все права защищены.</p>
             <div class="theme-toggle">
-                <button id="theme-toggle-btn">
-                    🌙
-                </button>
+                <button id="theme-toggle-btn">🌙</button>
             </div>
         </div>
     </footer>
@@ -65,21 +60,17 @@
         const themeToggleBtn = document.getElementById('theme-toggle-btn');
         const body = document.body;
 
-        // Проверяем, сохранена ли тема в localStorage
-        if(localStorage.getItem('theme') === 'dark') {
-            body.classList.add('dark-theme');
-            themeToggleBtn.textContent = '🌞'; // Меняем иконку на светлую тему
-        }
+        // Включаем темную тему по умолчанию
+        body.classList.add('dark-theme');
+        themeToggleBtn.textContent = '🌞'; // Иконка для светлой темы
 
         // Переключение темы
         themeToggleBtn.addEventListener('click', () => {
             body.classList.toggle('dark-theme');
             if (body.classList.contains('dark-theme')) {
-                themeToggleBtn.textContent = '🌞'; // Иконка для светлой темы
-                localStorage.setItem('theme', 'dark');
+                themeToggleBtn.textContent = '🌞';
             } else {
-                themeToggleBtn.textContent = '🌙'; // Иконка для темной темы
-                localStorage.removeItem('theme');
+                themeToggleBtn.textContent = '🌙';
             }
         });
     </script>
