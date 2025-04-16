@@ -47,13 +47,41 @@
                 </div>
             </div>
         </section>
-
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <p>&copy; 2025 AnimeVerse. Все права защищены.</p>
-            </div>
-        </footer>
     </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AnimeVerse. Все права защищены.</p>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn">
+                    🌙
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const body = document.body;
+
+        // Проверяем, сохранена ли тема в localStorage
+        if(localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-theme');
+            themeToggleBtn.textContent = '🌞'; // Меняем иконку на светлую тему
+        }
+
+        // Переключение темы
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            if (body.classList.contains('dark-theme')) {
+                themeToggleBtn.textContent = '🌞'; // Иконка для светлой темы
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggleBtn.textContent = '🌙'; // Иконка для темной темы
+                localStorage.removeItem('theme');
+            }
+        });
+    </script>
 </body>
 </html>
