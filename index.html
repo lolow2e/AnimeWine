@@ -11,17 +11,11 @@
 </head>
 <body class="dark-theme">
 
-    <!-- Меню из трех точек -->
-    <div class="dots-menu" id="dotsToggle">
+    <!-- Кнопка-три точки по центру -->
+    <div class="dots-menu" id="menuToggle">
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
-    </div>
-
-    <div class="dropdown-menu" id="dropdownMenu">
-        <a href="#">Категории</a>
-        <a href="#">Популярное</a>
-        <a href="#">Новое</a>
     </div>
 
     <header>
@@ -29,7 +23,9 @@
             <div class="logo">
                 <h1>AnimeVerse</h1>
             </div>
-            <nav>
+
+            <!-- Навигация, изначально скрыта -->
+            <nav id="mainNav" class="hidden">
                 <ul>
                     <li><a href="#">Главная</a></li>
                     <li><a href="#">Аниме</a></li>
@@ -74,32 +70,22 @@
         const themeToggleBtn = document.getElementById('theme-toggle-btn');
         const body = document.body;
 
-        // Темная тема по умолчанию
+        // Тёмная тема по умолчанию
         body.classList.add('dark-theme');
         themeToggleBtn.textContent = '🌞';
 
         themeToggleBtn.addEventListener('click', () => {
             body.classList.toggle('dark-theme');
-            if (body.classList.contains('dark-theme')) {
-                themeToggleBtn.textContent = '🌞';
-            } else {
-                themeToggleBtn.textContent = '🌙';
-            }
+            themeToggleBtn.textContent = body.classList.contains('dark-theme') ? '🌞' : '🌙';
         });
 
-        // Меню три точки
-        const dotsToggle = document.getElementById('dotsToggle');
-        const dropdownMenu = document.getElementById('dropdownMenu');
+        // Переключение меню по три точки
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('mainNav');
 
-        dotsToggle.addEventListener('click', (e) => {
-            dropdownMenu.classList.toggle('show');
-            e.stopPropagation();
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!dropdownMenu.contains(e.target)) {
-                dropdownMenu.classList.remove('show');
-            }
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('show-nav');
         });
     </script>
 </body>
