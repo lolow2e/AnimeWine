@@ -1,68 +1,81 @@
-/* Сброс стилей */
+/* Сброс и базовые стили */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Общие стили */
 body {
     background-color: #121212;
-    color: #fff;
+    color: #f0f0f0;
     line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    scroll-behavior: smooth;
 }
 
+/* Темная тема */
 body.dark-theme {
     background-color: #121212;
-    color: #fff;
+    color: #f0f0f0;
+}
+
+/* Анимация появления */
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Header */
 header {
-    background-color: #333;
-    padding: 20px;
+    background-color: #1e1e1e;
+    padding: 20px 0;
     color: #fff;
+    border-bottom: 1px solid #444;
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 10%;
 }
 
-header .logo h1 {
+.logo h1 {
     font-size: 36px;
     color: #ff6f61;
 }
 
-header nav ul {
+nav ul {
     display: flex;
     list-style: none;
 }
 
-header nav ul li {
+nav ul li {
     margin: 0 20px;
 }
 
-header nav ul li a {
+nav ul li a {
     color: #fff;
     text-decoration: none;
     font-size: 18px;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease;
 }
 
-header nav ul li a:hover {
+nav ul li a:hover {
     color: #ff6f61;
 }
 
 /* Главный контент */
 main {
-    padding: 40px 0;
+    padding: 50px 10%;
 }
 
-/* Секция с аниме */
+/* Секция "Популярные аниме" */
 .featured {
     text-align: center;
 }
@@ -70,6 +83,7 @@ main {
 .featured h2 {
     font-size: 32px;
     margin-bottom: 30px;
+    position: relative;
 }
 
 .anime-cards {
@@ -80,62 +94,73 @@ main {
 }
 
 .anime-card {
-    background-color: #222;
-    border: 1px solid #444;
+    background-color: #1d1d1d;
+    border: 1px solid #333;
     width: 280px;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .anime-card img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 .anime-card h3 {
     font-size: 20px;
     margin-top: 15px;
+    color: #fff;
 }
 
-/* Эффекты при наведении */
+/* Hover эффект карточек */
 .anime-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 25px rgba(255, 111, 97, 0.4);
 }
 
 /* Footer */
 footer {
-    background-color: #333;
+    background-color: #1e1e1e;
+    padding: 30px 10%;
     color: #fff;
     text-align: center;
-    padding: 20px;
+    border-top: 1px solid #444;
+    position: relative;
 }
 
-footer .theme-toggle button {
-    background-color: transparent;
+.theme-toggle button {
+    margin-top: 15px;
+    font-size: 32px;
     border: 2px solid #fff;
-    font-size: 36px;
-    cursor: pointer;
+    background-color: transparent;
+    color: #fff;
     padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-footer .theme-toggle button:hover {
+.theme-toggle button:hover {
     transform: scale(1.2);
     color: #ff6f61;
 }
 
-/* Адаптивный дизайн */
+/* Адаптивность */
 @media (max-width: 768px) {
-    header nav ul {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
         flex-direction: column;
     }
 
-    header nav ul li {
+    nav ul li {
         margin: 10px 0;
     }
 
@@ -145,21 +170,41 @@ footer .theme-toggle button:hover {
     }
 
     .anime-card {
-        width: 100%;
-        max-width: 300px;
+        width: 90%;
+        max-width: 320px;
     }
 }
 
-@media (max-width: 480px) {
-    header .logo h1 {
-        font-size: 28px;
-    }
+/* Три точки */
+.dots-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    cursor: pointer;
+    display: flex;
+    gap: 6px;
+    padding: 5px;
+    animation: fadeIn 1s ease-out;
+}
 
-    header nav ul li a {
-        font-size: 16px;
-    }
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: blink 1.2s infinite;
+}
 
-    .anime-card h3 {
-        font-size: 18px;
-    }
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
 }
