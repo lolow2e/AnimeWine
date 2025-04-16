@@ -9,9 +9,17 @@
     <title>AnimeVerse - мир аниме</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark-theme">
+
+    <!-- Три точки -->
+    <div class="dots-container" onclick="scrollToFeatures()">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
     <header>
-        <div class="container">
+        <div class="container fade-in">
             <div class="logo">
                 <h1>AnimeVerse</h1>
             </div>
@@ -28,7 +36,7 @@
     </header>
 
     <main>
-        <section class="featured">
+        <section class="featured fade-in" id="featured">
             <h2>Популярные аниме</h2>
             <div class="anime-cards">
                 <div class="anime-card">
@@ -51,7 +59,7 @@
         <div class="container">
             <p>&copy; 2025 AnimeVerse. Все права защищены.</p>
             <div class="theme-toggle">
-                <button id="theme-toggle-btn">🌙</button>
+                <button id="theme-toggle-btn">🌞</button>
             </div>
         </div>
     </footer>
@@ -60,11 +68,10 @@
         const themeToggleBtn = document.getElementById('theme-toggle-btn');
         const body = document.body;
 
-        // Включаем темную тему по умолчанию
+        // Тёмная тема по умолчанию
         body.classList.add('dark-theme');
-        themeToggleBtn.textContent = '🌞'; // Иконка для светлой темы
+        themeToggleBtn.textContent = '🌞';
 
-        // Переключение темы
         themeToggleBtn.addEventListener('click', () => {
             body.classList.toggle('dark-theme');
             if (body.classList.contains('dark-theme')) {
@@ -73,6 +80,11 @@
                 themeToggleBtn.textContent = '🌙';
             }
         });
+
+        function scrollToFeatures() {
+            const featuredSection = document.getElementById('featured');
+            featuredSection.scrollIntoView({ behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
