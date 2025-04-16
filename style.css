@@ -28,6 +28,11 @@ body.dark-theme footer {
     background-color: #333;
 }
 
+body.dark-theme .anime-card {
+    background-color: #222;
+    border-color: #555;
+}
+
 /* Header */
 header {
     background-color: #fff;
@@ -130,14 +135,16 @@ footer {
 
 footer .theme-toggle button {
     background-color: transparent;
-    border: none;
-    font-size: 24px;
+    border: 2px solid #333;
+    font-size: 36px;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    padding: 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 footer .theme-toggle button:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
+    color: #ff6f61;
 }
 
 /* Responsive Design */
