@@ -11,19 +11,28 @@ body {
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Контейнер */
-.container {
-    width: 90%;
-    margin: 0 auto;
+/* Темная тема */
+body.dark-theme {
+    background-color: #121212;
+    color: #fff;
+}
+
+body.dark-theme header {
+    background-color: #333;
+}
+
+body.dark-theme footer {
+    background-color: #333;
 }
 
 /* Header */
 header {
-    background-color: #333;
+    background-color: #fff;
     padding: 10px 0;
-    color: #fff;
+    color: #333;
 }
 
 header nav ul {
@@ -37,7 +46,7 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: #fff;
+    color: #333;
     text-decoration: none;
     font-size: 18px;
     transition: all 0.3s ease;
@@ -113,10 +122,22 @@ main {
 
 /* Footer */
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #fff;
+    color: #333;
     text-align: center;
     padding: 20px;
+}
+
+footer .theme-toggle button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+footer .theme-toggle button:hover {
+    transform: scale(1.1);
 }
 
 /* Responsive Design */
