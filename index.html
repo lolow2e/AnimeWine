@@ -11,11 +11,17 @@
 </head>
 <body class="dark-theme">
 
-    <!-- Три точки -->
-    <div class="dots-container" onclick="scrollToFeatures()">
+    <!-- Меню из трех точек -->
+    <div class="dots-menu" id="dotsToggle">
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
+    </div>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="#">Категории</a>
+        <a href="#">Популярное</a>
+        <a href="#">Новое</a>
     </div>
 
     <header>
@@ -68,7 +74,7 @@
         const themeToggleBtn = document.getElementById('theme-toggle-btn');
         const body = document.body;
 
-        // Тёмная тема по умолчанию
+        // Темная тема по умолчанию
         body.classList.add('dark-theme');
         themeToggleBtn.textContent = '🌞';
 
@@ -81,10 +87,20 @@
             }
         });
 
-        function scrollToFeatures() {
-            const featuredSection = document.getElementById('featured');
-            featuredSection.scrollIntoView({ behavior: 'smooth' });
-        }
+        // Меню три точки
+        const dotsToggle = document.getElementById('dotsToggle');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        dotsToggle.addEventListener('click', (e) => {
+            dropdownMenu.classList.toggle('show');
+            e.stopPropagation();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
     </script>
 </body>
 </html>
